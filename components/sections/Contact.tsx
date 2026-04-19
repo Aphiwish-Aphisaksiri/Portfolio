@@ -38,10 +38,11 @@ export default function Contact() {
     async (data: ContactFormData) => {
       setIsSubmitting(true);
       try {
+        const honeypot = (document.getElementById("contact-website") as HTMLInputElement)?.value;
         const res = await fetch("/api/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ ...data, website: honeypot }),
         });
 
         if (res.ok) {
@@ -50,6 +51,11 @@ export default function Contact() {
             type: "success",
           });
           reset();
+        } else if (res.status === 429) {
+          setToast({
+            message: "You've already sent a message today. Please try again tomorrow.",
+            type: "error",
+          });
         } else {
           const json = await res.json();
           setToast({
@@ -127,6 +133,20 @@ export default function Contact() {
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-5"
             >
+              {/* Honeypot — hidden from real users */}
+              <div
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", opacity: 0 }}
+              >
+                <input
+                  id="contact-website"
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               {/* Name */}
               <div className="flex flex-col gap-1.5">
                 <label
