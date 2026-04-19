@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { isRateLimited } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -6,7 +7,22 @@ export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const body = await request.json();
-    const { name, email, message } = body;
+    const { name, email, message, website } = body;
+
+    // Honeypot check — bots fill this hidden field
+    if (website) {
+      return Response.json({ success: true });
+    }
+
+    // Rate limiting — 1 request per IP per 24 hours
+    const forwarded = request.headers.get("x-forwarded-for");
+    const ip = forwarded?.split(",")[0]?.trim() || "unknown";
+    if (isRateLimited(ip)) {
+      return Response.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
 
     // Server-side validation
     if (!name || !email || !message) {
