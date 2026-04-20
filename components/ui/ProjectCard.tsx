@@ -1,8 +1,36 @@
 "use client";
 
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Project, STACK_ICON_MAP } from "@/lib/constants";
+import { Project, STACK_ICON_MAP, StackIconEntry } from "@/lib/constants";
 import { FiChevronDown, FiExternalLink } from "react-icons/fi";
+
+const DEFAULT_ENTRY: StackIconEntry = { icon: "devicon-plain", type: "devicon" };
+
+function StackIcon({ entry, size }: { entry: StackIconEntry; size: "sm" | "lg" }) {
+  const sizeClass = size === "sm" ? "text-lg" : "text-2xl";
+  const imgSize = size === "sm" ? 18 : 24;
+
+  if (entry.type === "svg") {
+    return (
+      <span className={`inline-flex items-center justify-center ${size === "sm" ? "w-[18px] h-[18px]" : "w-[24px] h-[24px]"}`}>
+        <Image
+          src={entry.icon}
+          alt=""
+          width={imgSize}
+          height={imgSize}
+          className={`w-auto h-auto max-w-full max-h-full ${entry.darkIcon ? "invert" : ""}`}
+        />
+      </span>
+    );
+  }
+
+  return (
+    <i
+      className={`${entry.icon} ${entry.darkIcon ? "text-text-primary" : "colored"} ${sizeClass}`}
+    />
+  );
+}
 
 interface ProjectCardProps {
   project: Project;
@@ -45,11 +73,9 @@ export default function ProjectCard({
         <div className="flex items-center gap-3 ml-4 shrink-0">
           <div className="hidden sm:flex items-center gap-2">
             {previewStack.map((tech) => (
-              <i
-                key={tech}
-                className={`${STACK_ICON_MAP[tech] || "devicon-plain"} colored text-lg`}
-                title={tech}
-              />
+              <span key={tech} title={tech}>
+                <StackIcon entry={STACK_ICON_MAP[tech] || DEFAULT_ENTRY} size="sm" />
+              </span>
             ))}
           </div>
           <motion.div
@@ -99,9 +125,7 @@ export default function ProjectCard({
                     key={tech}
                     className="flex flex-col items-center gap-1"
                   >
-                    <i
-                      className={`${STACK_ICON_MAP[tech] || "devicon-plain"} colored text-2xl`}
-                    />
+                    <StackIcon entry={STACK_ICON_MAP[tech] || DEFAULT_ENTRY} size="lg" />
                     <span className="text-text-muted text-[10px]">{tech}</span>
                   </div>
                 ))}

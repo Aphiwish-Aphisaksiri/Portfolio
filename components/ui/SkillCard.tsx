@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SkillCategory } from "@/lib/constants";
 
 interface SkillCardProps {
@@ -13,16 +14,28 @@ export default function SkillCard({ category }: SkillCardProps) {
         {category.title}
       </h3>
 
-      {/* Icon grid */}
-      <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
+      {/* Icon grid — flexbox for centering trailing items, max 4 per row */}
+      <div className="flex flex-wrap justify-center gap-4 max-w-[304px] mx-auto">
         {category.skills.map((skill) => (
           <div
             key={skill.name}
-            className="flex flex-col items-center gap-1.5 group"
+            className="flex flex-col items-center gap-1.5 group w-16"
           >
-            <i
-              className={`${skill.icon} colored text-2xl group-hover:scale-110 transition-transform duration-200`}
-            />
+            {skill.customIcon ? (
+              <span className="inline-flex items-center justify-center w-[24px] h-[24px]">
+                <Image
+                  src={skill.customIcon}
+                  alt={skill.name}
+                  width={24}
+                  height={24}
+                  className={`w-auto h-auto max-w-full max-h-full group-hover:scale-110 transition-transform duration-200 ${skill.darkIcon ? "invert" : ""}`}
+                />
+              </span>
+            ) : (
+              <i
+                className={`${skill.icon} ${skill.darkIcon ? "text-text-primary" : "colored"} text-2xl group-hover:scale-110 transition-transform duration-200`}
+              />
+            )}
             <span className="text-text-muted text-[10px] text-center leading-tight">
               {skill.name}
             </span>
