@@ -346,4 +346,9 @@ export const STACK_ICON_MAP: Record<string, StackIconEntry> = {
   PyTorch: { icon: "devicon-pytorch-plain", type: "devicon" },
   OpenCV: { icon: "devicon-opencv-plain", type: "devicon" },
   "Node.js": { icon: "devicon-nodejs-plain", type: "devicon" },
+  JavaScript: { icon: "devicon-javascript-plain", type: "devicon" },
+  Postman: { icon: "devicon-postman-plain", type: "devicon" },
+  MongoDB: { icon: "devicon-mongodb-plain", type: "devicon" },
+  Confluence: { icon: "devicon-confluence-plain", type: "devicon" },
+  Jira: { icon: "devicon-jira-plain", type: "devicon" },
 };

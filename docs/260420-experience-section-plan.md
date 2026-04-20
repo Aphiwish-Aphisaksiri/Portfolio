@@ -224,17 +224,25 @@ import { AnimatePresence, motion } from "framer-motion";
           ))}
         </ul>
 
-        {/* Skill tags */}
+        {/* Skill tags — icon + label, same style as ProjectCard stack */}
         {experience.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 pt-3 border-t border-border mt-4">
-            {experience.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs px-2.5 py-1 rounded-full bg-surface text-text-muted border border-border"
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="flex flex-wrap gap-4 pt-3 border-t border-border mt-4">
+            {experience.tags.map((tag) => {
+              const entry = STACK_ICON_MAP[tag];
+              return (
+                <div key={tag} className="flex flex-col items-center gap-1">
+                  {entry ? (
+                    entry.type === "svg" ? (
+                      <Image src={entry.icon} alt="" width={24} height={24}
+                        className={`... ${entry.darkIcon ? "invert" : ""}`} />
+                    ) : (
+                      <i className={`${entry.icon} ${entry.darkIcon ? "text-text-primary" : "colored"} text-2xl`} />
+                    )
+                  ) : null}
+                  <span className="text-text-muted text-[10px]">{tag}</span>
+                </div>
+              );
+            })}
           </div>
         )}
 
