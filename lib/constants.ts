@@ -115,8 +115,8 @@ export const STAT_CARDS: StatCardData[] = [
   },
   {
     icon: "🎓",
-    label: "Academic Achievement",
-    value: "First Class Honors",
+    label: "Engineering, Mahidol University",
+    value: "First Class Honors · Ranked #1",
   },
   {
     icon: "🚀",
