@@ -113,7 +113,7 @@ export const PROJECTS: Project[] = [
     collapsed:
       "Full-stack project management app with an agentic AI chatbot powered by local LLMs running on consumer hardware.",
     expanded:
-      "ProjectHub is a full-stack app featuring a RAG-powered agentic chatbot that reasons over project notes and tasks. The AI pipeline uses pgvector for semantic search, a tool-calling loop with up to 5 iterations, native thinking mode, and real-time streaming with observability metrics. Everything runs locally via Ollama on an RTX 5070.",
+      "ProjectHub is a full-stack app featuring a RAG-powered agentic chatbot that reasons over project notes and tasks. The AI pipeline uses pgvector for semantic search, CRUD operations, a tool-calling loop with up to 5 iterations, native thinking mode, and real-time streaming with observability metrics. Everything runs locally via Ollama on an RTX 5070.",
     metrics: [
       { icon: "⚡", text: "185 tok/s inference (Gemma 4)" },
       { icon: "⏱", text: "1.85s avg response time" },
@@ -177,9 +177,9 @@ export const PROJECTS: Project[] = [
     collapsed:
       "Custom object detection model fine-tuned on a domain-specific dataset, achieving mAP50 of 0.792.",
     expanded:
-      "Fine-tuned a YOLOv8 model on a custom Roboflow dataset for domain-specific object detection. Trained across multiple checkpoints, reaching a best mAP50 of 0.792. Covers the full pipeline from dataset preparation and augmentation to evaluation.",
+      "Fine-tuned a YOLOv11 model on a custom Roboflow dataset for domain-specific object detection. Trained across multiple checkpoints, reaching a best mAP50 of 0.792. Covers the full pipeline from dataset preparation and augmentation to evaluation.",
     metrics: [{ icon: "🎯", text: "mAP50: 0.792 at best checkpoint" }],
-    stack: ["Python", "YOLOv8", "Roboflow", "PyTorch"],
+    stack: ["Python", "YOLOv11", "Roboflow", "PyTorch"],
     links: [
       {
         label: "GitHub",
