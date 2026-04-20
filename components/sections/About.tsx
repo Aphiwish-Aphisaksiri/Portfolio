@@ -32,7 +32,7 @@ export default function About() {
             </p>
 
             {/* Stat cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {STAT_CARDS.map((stat) => (
                 <StatCard key={stat.label} data={stat} />
               ))}
