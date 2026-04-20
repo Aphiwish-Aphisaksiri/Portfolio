@@ -22,13 +22,15 @@ export default function SkillCard({ category }: SkillCardProps) {
             className="flex flex-col items-center gap-1.5 group w-16"
           >
             {skill.customIcon ? (
-              <Image
-                src={skill.customIcon}
-                alt={skill.name}
-                width={24}
-                height={24}
-                className={`group-hover:scale-110 transition-transform duration-200 ${skill.darkIcon ? "invert" : ""}`}
-              />
+              <span className="inline-flex items-center justify-center w-[24px] h-[24px]">
+                <Image
+                  src={skill.customIcon}
+                  alt={skill.name}
+                  width={24}
+                  height={24}
+                  className={`w-auto h-auto max-w-full max-h-full group-hover:scale-110 transition-transform duration-200 ${skill.darkIcon ? "invert" : ""}`}
+                />
+              </span>
             ) : (
               <i
                 className={`${skill.icon} ${skill.darkIcon ? "text-text-primary" : "colored"} text-2xl group-hover:scale-110 transition-transform duration-200`}
