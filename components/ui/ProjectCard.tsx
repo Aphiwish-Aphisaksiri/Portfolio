@@ -13,13 +13,15 @@ function StackIcon({ entry, size }: { entry: StackIconEntry; size: "sm" | "lg" }
 
   if (entry.type === "svg") {
     return (
-      <Image
-        src={entry.icon}
-        alt=""
-        width={imgSize}
-        height={imgSize}
-        className={`${entry.darkIcon ? "invert" : ""}`}
-      />
+      <span className={`inline-flex items-center justify-center ${size === "sm" ? "w-[18px] h-[18px]" : "w-[24px] h-[24px]"}`}>
+        <Image
+          src={entry.icon}
+          alt=""
+          width={imgSize}
+          height={imgSize}
+          className={`w-auto h-auto max-w-full max-h-full ${entry.darkIcon ? "invert" : ""}`}
+        />
+      </span>
     );
   }
 
