@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Aphiwish Aphisaksiri — Software Engineer",
   description:
     "Full-stack Software Engineer focused on AI-integrated applications. Based in Bangkok, Thailand.",
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Aphiwish Aphisaksiri",
     description: "Software Engineer · Bangkok, Thailand",
