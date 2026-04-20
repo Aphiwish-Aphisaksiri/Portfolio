@@ -26,6 +26,14 @@ export interface Project {
 export interface Skill {
   name: string;
   icon: string;
+  customIcon?: string;
+  darkIcon?: boolean;
+}
+
+export interface StackIconEntry {
+  icon: string;
+  type: "devicon" | "svg";
+  darkIcon?: boolean;
 }
 
 export interface SkillCategory {
@@ -200,20 +208,20 @@ export const SKILLS: SkillCategory[] = [
     title: "AI / ML",
     skills: [
       { name: "Python", icon: "devicon-python-plain" },
-      { name: "Ollama", icon: "devicon-ollama-plain" },
+      { name: "Ollama", icon: "", customIcon: "/icons/ollama.svg", darkIcon: true },
       { name: "RAG Pipelines", icon: "devicon-postgresql-plain" },
       { name: "pgvector", icon: "devicon-postgresql-plain" },
       { name: "Embeddings", icon: "devicon-numpy-plain" },
-      { name: "LDA Classifiers", icon: "devicon-python-plain" },
+      { name: "LDA Classifiers", icon: "devicon-scikitlearn-plain" },
       { name: "Prompt Engineering", icon: "devicon-json-plain" },
-      { name: "nomic-embed-text", icon: "devicon-python-plain" },
+      { name: "nomic-embed-text", icon: "", customIcon: "/icons/huggingface-color.svg" },
     ],
   },
   {
     emoji: "🎨",
     title: "Frontend",
     skills: [
-      { name: "Next.js", icon: "devicon-nextjs-plain" },
+      { name: "Next.js", icon: "devicon-nextjs-plain", darkIcon: true },
       { name: "React", icon: "devicon-react-original" },
       { name: "TypeScript", icon: "devicon-typescript-plain" },
       { name: "Tailwind CSS", icon: "devicon-tailwindcss-original" },
@@ -229,7 +237,7 @@ export const SKILLS: SkillCategory[] = [
       { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
       { name: "Prisma ORM", icon: "devicon-prisma-original" },
       { name: "REST APIs", icon: "devicon-json-plain" },
-      { name: "WebSockets", icon: "devicon-socketio-original" },
+      { name: "WebSockets", icon: "devicon-socketio-original", darkIcon: true },
     ],
   },
   {
@@ -240,7 +248,7 @@ export const SKILLS: SkillCategory[] = [
       { name: "Docker Compose", icon: "devicon-docker-plain" },
       { name: "GitHub Actions", icon: "devicon-githubactions-plain" },
       { name: "Git", icon: "devicon-git-plain" },
-      { name: "Linux", icon: "devicon-linux-plain" },
+      { name: "Linux", icon: "devicon-linux-plain", darkIcon: true },
       { name: "WSL2", icon: "devicon-ubuntu-plain" },
     ],
   },
@@ -251,23 +259,23 @@ export const SKILLS: SkillCategory[] = [
 // Used by ProjectCard to show colored icons
 // ──────────────────────────────────────
 
-export const STACK_ICON_MAP: Record<string, string> = {
-  "Next.js": "devicon-nextjs-plain",
-  FastAPI: "devicon-fastapi-plain",
-  PostgreSQL: "devicon-postgresql-plain",
-  pgvector: "devicon-postgresql-plain",
-  Docker: "devicon-docker-plain",
-  Ollama: "devicon-ollama-plain",
-  TypeScript: "devicon-typescript-plain",
-  Python: "devicon-python-plain",
-  NumPy: "devicon-numpy-plain",
-  "TCP Sockets": "devicon-python-plain",
-  "EEG / BCI": "devicon-python-plain",
-  DearPyGUI: "devicon-python-plain",
-  HDF5: "devicon-python-plain",
-  Multithreading: "devicon-python-plain",
-  MATLAB: "devicon-matlab-plain",
-  YOLOv8: "devicon-python-plain",
-  Roboflow: "devicon-python-plain",
-  PyTorch: "devicon-pytorch-plain",
+export const STACK_ICON_MAP: Record<string, StackIconEntry> = {
+  "Next.js": { icon: "devicon-nextjs-plain", type: "devicon", darkIcon: true },
+  FastAPI: { icon: "devicon-fastapi-plain", type: "devicon" },
+  PostgreSQL: { icon: "devicon-postgresql-plain", type: "devicon" },
+  pgvector: { icon: "devicon-postgresql-plain", type: "devicon" },
+  Docker: { icon: "devicon-docker-plain", type: "devicon" },
+  Ollama: { icon: "/icons/ollama.svg", type: "svg", darkIcon: true },
+  TypeScript: { icon: "devicon-typescript-plain", type: "devicon" },
+  Python: { icon: "devicon-python-plain", type: "devicon" },
+  NumPy: { icon: "devicon-numpy-plain", type: "devicon" },
+  "TCP Sockets": { icon: "/icons/globe.svg", type: "svg", darkIcon: true },
+  "EEG / BCI": { icon: "/icons/brain.svg", type: "svg", darkIcon: true },
+  DearPyGUI: { icon: "devicon-python-plain", type: "devicon" },
+  HDF5: { icon: "devicon-python-plain", type: "devicon" },
+  Multithreading: { icon: "/icons/cpu.svg", type: "svg" },
+  MATLAB: { icon: "devicon-matlab-plain", type: "devicon" },
+  YOLOv11: { icon: "/icons/ultralytics.svg", type: "svg" },
+  Roboflow: { icon: "/icons/roboflow.svg", type: "svg" },
+  PyTorch: { icon: "devicon-pytorch-plain", type: "devicon" },
 };
