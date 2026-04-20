@@ -55,6 +55,7 @@ export interface Experience {
   period: string;
   current: boolean; // set to true for active role — used to show "Present" badge
   bullets: string[];
+  tags: string[];
 }
 
 // ──────────────────────────────────────
@@ -133,9 +134,21 @@ export const STAT_CARDS: StatCardData[] = [
 // The Experience component should sort by current first, then by period descending.
 
 export const EXPERIENCES: Experience[] = [
+  // {
+  //   role: "Software Engineer (AI)",
+  //   company: "Omise",
+  //   companyUrl: "https://omise.co/",
+  //   period: "May 2026 – Present",
+  //   current: true,
+  //   bullets: [
+  //     "-"
+  //   ],
+  //   tags: [""],
+  // },
   {
     role: "Software Engineer in Test Intern",
     company: "LINE MAN Wongnai",
+    companyUrl: "https://lmwn.com/",
     period: "May 2024 – Jul 2024",
     current: false,
     bullets: [
@@ -143,6 +156,7 @@ export const EXPERIENCES: Experience[] = [
       "Developed automated API tests in JavaScript using Postman to validate feature requests, data flow, and response integrity, and performed manual database validation checks in MongoDB to verify data consistency.",
       "Documented all testing methodology and results in Confluence for team visibility and participated in the CI/CD delivery pipeline by logging verified issues with build versions into the deployment queue.",
     ],
+    tags: ["JavaScript", "Postman", "MongoDB", "Confluence", "Jira"],
   },
 ];
 
