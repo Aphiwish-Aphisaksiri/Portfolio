@@ -67,7 +67,7 @@ export const PERSONAL = {
   title: "Software Engineer",
   location: "Bangkok, Thailand",
   summary:
-    "Biomedical Engineering graduate turned Software Engineer, focused on building full-stack applications with integrated AI.",
+    "Biomedical Engineering graduate specializing in AI systems — RAG pipelines, agentic LLMs, and the full-stack infrastructure to ship them",
   email: "work@aphiwish.com",
   github: {
     url: "https://github.com/Aphiwish-Aphisaksiri",
@@ -100,7 +100,7 @@ export const NAV_LINKS = [
 // ──────────────────────────────────────
 
 export const ABOUT_TEXT =
-  "I started in Biomedical Engineering at Mahidol University, where I built signal processing systems and competed internationally in BCI research. That problem-solving foundation shaped how I approach software — I care about systems that work under pressure, not just in demos. Now I build full-stack applications with AI at their core.";
+  "I started in Biomedical Engineering at Mahidol University, where I built signal processing systems and competed internationally in BCI research. That problem-solving foundation shaped how I approach software — I care about systems that work under pressure, not just in demos. Now I design and ship AI systems: agentic pipelines, RAG architectures, and the full-stack layer that makes them usable.";
 
 export const STAT_CARDS: StatCardData[] = [
   {
