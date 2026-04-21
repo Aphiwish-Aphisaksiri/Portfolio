@@ -5,7 +5,7 @@ import Particles from "@tsparticles/react";
 import type { ISourceOptions } from "@tsparticles/engine";
 
 const particleOptions: ISourceOptions = {
-  fullScreen: false,
+  fullScreen: { enable: true, zIndex: 0 },
   background: {
     color: { value: "transparent" },
   },
@@ -28,7 +28,7 @@ const particleOptions: ISourceOptions = {
       outModes: { default: "bounce" },
     },
     number: {
-      density: { enable: true, width: 1200, height: 800 },
+      density: { enable: true },
       value: 60,
     },
     opacity: {
@@ -86,12 +86,10 @@ export default function ParticleBackground() {
   if (!ready) return null;
 
   return (
-    <div className="fixed inset-0 z-0">
-      <Particles
-        id="tsparticles"
-        options={particleOptions}
-        particlesLoaded={particlesLoaded}
-      />
-    </div>
+    <Particles
+      id="tsparticles"
+      options={particleOptions}
+      particlesLoaded={particlesLoaded}
+    />
   );
 }
