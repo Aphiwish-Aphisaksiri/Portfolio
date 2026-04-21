@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants";
 import { HiMenu, HiX } from "react-icons/hi";
 
@@ -69,8 +70,9 @@ export default function Nav() {
           <a
             href="#hero"
             onClick={(e) => handleNavClick(e, "#hero")}
-            className="text-text-primary font-semibold text-lg tracking-tight hover:text-accent transition-colors duration-200"
+            className="flex items-center gap-2 text-text-primary font-semibold text-lg tracking-tight hover:text-accent transition-colors duration-200"
           >
+            <Image src="/icons/logo.svg" alt="Aphiwish logo" width={24} height={24} style={{ width: 24, height: "auto" }} />
             aphiwish
           </a>
 
