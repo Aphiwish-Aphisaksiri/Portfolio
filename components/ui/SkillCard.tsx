@@ -36,7 +36,7 @@ export default function SkillCard({ category }: SkillCardProps) {
                 className={`${skill.icon} ${skill.darkIcon ? "text-text-primary" : "colored"} text-2xl group-hover:scale-110 transition-transform duration-200`}
               />
             )}
-            <span className="text-text-muted text-[10px] text-center leading-tight">
+            <span className="text-text-muted text-[10px] text-center leading-tight h-[2.5em] flex items-center justify-center">
               {skill.name}
             </span>
           </div>
