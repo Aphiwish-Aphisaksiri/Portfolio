@@ -41,6 +41,11 @@ body {
   color: var(--color-text-primary);
 }
 
+p strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
 /* ──────────────────────────────────────
    Keyframe Animations
    ────────────────────────────────────── */
