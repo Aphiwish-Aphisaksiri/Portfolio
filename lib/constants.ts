@@ -46,6 +46,8 @@ export interface StatCardData {
   icon: string;
   label: string;
   value: string;
+  href?: string;
+  isExternal?: boolean;
 }
 
 export interface Experience {
@@ -100,29 +102,36 @@ export const NAV_LINKS = [
 // About Section
 // ──────────────────────────────────────
 
-export const ABOUT_TEXT =
-  "I started in Biomedical Engineering at Mahidol University, where I built signal processing systems and competed internationally in BCI research. That problem-solving foundation shaped how I approach software — I care about systems that work under pressure, not just in demos. Now I design and ship AI systems: agentic pipelines, RAG architectures, and the full-stack layer that makes them usable.";
+// ABOUT_TEXT is rendered as JSX in About.tsx to support <strong> formatting.
 
 export const STAT_CARDS: StatCardData[] = [
   {
     icon: "🏆",
     label: "Grand Prize · 100+ Global Teams",
     value: "8th Delta International Contest",
+    href: "https://www.deltaww.com/en-US/press/35668",
+    isExternal: true,
   },
   {
     icon: "🌍",
     label: "International BCI Competition",
     value: "CYBATHLON 2024",
+    href: "#projects",
+    isExternal: false,
   },
   {
     icon: "🎓",
     label: "Engineering, Mahidol University",
     value: "First Class Honors · Ranked #1",
+    href: "https://www.facebook.com/egmahidol/posts/%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%A8%E0%B8%B6%E0%B8%81%E0%B8%A9%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%A8%E0%B8%A7%E0%B8%B0%E0%B8%A1%E0%B8%AB%E0%B8%B4%E0%B8%94%E0%B8%A5-%E0%B8%84%E0%B8%A7%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%AB%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%8D%E0%B8%A3%E0%B8%B2%E0%B8%87%E0%B8%A7%E0%B8%B1%E0%B8%A5%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%94%E0%B8%B5-%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5-2567%E0%B8%84%E0%B8%93%E0%B8%B0%E0%B8%A7%E0%B8%B4%E0%B8%A8%E0%B8%A7%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B8%A3%E0%B9%8C-%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2/1396705611588293/",
+    isExternal: true,
   },
   {
     icon: "🚀",
     label: "Projects Shipped",
     value: "4+",
+    href: "#projects",
+    isExternal: false,
   },
 ];
 
