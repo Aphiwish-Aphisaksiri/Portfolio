@@ -100,8 +100,7 @@ export const NAV_LINKS = [
 // About Section
 // ──────────────────────────────────────
 
-export const ABOUT_TEXT =
-  "I started in Biomedical Engineering at Mahidol University, where I built signal processing systems and competed internationally in BCI research. That problem-solving foundation shaped how I approach software — I care about systems that work under pressure, not just in demos. Now I design and ship AI systems: agentic pipelines, RAG architectures, and the full-stack layer that makes them usable.";
+// ABOUT_TEXT is rendered as JSX in About.tsx to support <strong> formatting.
 
 export const STAT_CARDS: StatCardData[] = [
   {

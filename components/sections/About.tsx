@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ABOUT_TEXT, STAT_CARDS } from "@/lib/constants";
+import { STAT_CARDS } from "@/lib/constants";
 import StatCard from "@/components/ui/StatCard";
 import ClayModel from "@/components/ui/ClayModel";
 
@@ -28,7 +28,16 @@ export default function About() {
           {/* Right column — Text + Stats */}
           <div className="md:col-span-3 flex flex-col gap-8">
             <p className="text-text-muted text-base sm:text-lg leading-relaxed">
-              {ABOUT_TEXT}
+              <strong>Biomedical Engineer turned AI Software Engineer.</strong>{" "}
+              I spent four years at Mahidol University building signal-processing
+              systems and competing on the international stage with BCI research
+              — which taught me to care about systems that work under pressure,
+              not just in demos. Today I design and ship{" "}
+              <strong>
+                agentic AI pipelines, RAG architectures, and the full-stack
+                infrastructure
+              </strong>{" "}
+              that makes them actually usable.
             </p>
 
             {/* Stat cards */}
