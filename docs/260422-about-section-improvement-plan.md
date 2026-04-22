@@ -275,6 +275,44 @@ The scroll-target cards (`#projects`) rely on `scroll-behavior: smooth` which is
 
 | TODO | Choice | Status |
 |------|--------|--------|
-| 1 — Paragraph rewrite | Option B — full rewrite with punchy hook | Approved — ready to implement |
-| 2 — Section redesign | Option B — card on right col, model floats | Approved — ready to implement |
-| 3 — Stat card links | Full implementation plan above | Ready to implement |
+| 1 — Paragraph rewrite | Option B — full rewrite with punchy hook | ✅ Implemented |
+| 2 — Section redesign | Option B chosen, then reverted — kept floating | ❌ Reverted (design preference) |
+| 3 — Stat card links | Full implementation plan above | ✅ Implemented |
+
+---
+
+## Conclusion
+
+### What was implemented
+
+**TODO 1 — About Me paragraph rewrite**
+
+The paragraph was rewritten using Option B. The old plain string in `lib/constants.ts` could not hold JSX, so `ABOUT_TEXT` was removed and the paragraph was inlined directly in `components/sections/About.tsx` as JSX with two `<strong>` elements. A `p strong` CSS rule was added to `app/globals.css` to ensure bold text renders in `--color-text-primary` rather than inheriting the muted paragraph color.
+
+The new text leads with "**Biomedical Engineer turned AI Software Engineer.**" — immediately establishing the career arc and contextualising why a portfolio for an AI engineer includes BCI research and biomedical competition work. The second bold phrase highlights the core technical offering: "**agentic AI pipelines, RAG architectures, and the full-stack infrastructure**".
+
+**TODO 2 — Section redesign**
+
+Option B (card around the right text column only, 3D model floating free) was implemented, then manually reverted. After seeing it live, the fully floating layout felt better than a boxed panel. The About section intentionally has no background container — the 3D clay model and the text coexist in open space, which distinguishes it visually from the Experience and Skills sections that use surface cards.
+
+**TODO 3 — Stat card links**
+
+All four stat cards are now interactive:
+
+| Card | Link type | Destination |
+|------|-----------|-------------|
+| 8th Delta International Contest | External | `deltaww.com/en-US/press/35668` |
+| CYBATHLON 2024 | Scroll | `#projects` |
+| First Class Honors · Ranked #1 | External | Facebook EGM Mahidol post |
+| Projects Shipped | Scroll | `#projects` |
+
+`StatCardData` in `lib/constants.ts` gained two optional fields: `href` and `isExternal`. `StatCard.tsx` was rewritten to conditionally render an `<a>` tag instead of a `<div>` when `href` is present. External cards get a `LuArrowUpRight` icon (14px, `react-icons/lu`) pinned to the top-right corner via `absolute` positioning — it transitions from `text-text-muted` to `text-accent` on hover using Tailwind's `group`/`group-hover` pattern. All external links include `rel="noopener noreferrer"`.
+
+### Files changed
+
+| File | Change |
+|------|--------|
+| `components/sections/About.tsx` | Removed `ABOUT_TEXT` import; inlined bold JSX paragraph |
+| `lib/constants.ts` | Removed `ABOUT_TEXT` constant; added `href?`/`isExternal?` to `StatCardData`; added URLs to all four `STAT_CARDS` entries |
+| `app/globals.css` | Added `p strong` rule for `--color-text-primary` and `font-weight: 600` |
+| `components/ui/StatCard.tsx` | Conditional `<a>`/`<div>` render; `LuArrowUpRight` external link indicator; `relative`/`group` classes |
