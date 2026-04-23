@@ -73,7 +73,7 @@ export default function Nav() {
             className="flex items-center gap-2 text-text-primary font-semibold text-lg tracking-tight hover:text-accent transition-colors duration-200"
           >
             <Image src="/icons/logo.svg" alt="Aphiwish logo" width={24} height={24} style={{ width: 24, height: "auto" }} />
-            aphiwish
+            Aphiwish
           </a>
 
           {/* Desktop nav links */}
