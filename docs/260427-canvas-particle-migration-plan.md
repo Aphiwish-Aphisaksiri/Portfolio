@@ -100,7 +100,17 @@ window.removeEventListener('mousemove', onMouseMove);
 window.removeEventListener('resize', onResize);
 ```
 
-## Verification Checklist
+## Addendum: Cursor Grab Lines (2026-04-27)
+
+Added cursor-connecting lines — lines drawn from nodes near the cursor to `mouse.x/y`, replicating tsparticles "grab" mode with full depth-aware control.
+
+### Changes
+
+- `CFG.grabDist: 140` — grab radius in px
+- `mouseOnScreen` boolean — prevents lines drawing to top-left corner before cursor enters the viewport
+- `drawGrabLines()` — iterates all nodes, projects each, draws a line to cursor if within `grabDist`; `alpha = (1 - d/grabDist) * 0.55 * n.z` (fades by distance and depth); `lineWidth: 0.8`
+- Called in `tick()` after node-to-node edge pass, before `drawNode` pass — grab lines render beneath node dots
+
 
 - [ ] `npm run dev` starts without errors
 - [ ] Canvas fills viewport behind all content (z-index 0)

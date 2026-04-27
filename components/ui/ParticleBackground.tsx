@@ -28,6 +28,7 @@ interface TiltState {
 const CFG = {
   nodeCount: 90,
   maxDist: 180,
+  grabDist: 140,
   nodeSpeed: 0.28,
   tiltAmount: 18,
   tiltSmooth: 0.055,
@@ -53,6 +54,7 @@ export default function ParticleBackground() {
     let W = 0, H = 0, cx = 0, cy = 0;
     let rafId = 0;
     let nodes: Node[] = [];
+    let mouseOnScreen = false;
 
     const mouse: MouseState = { x: 0, y: 0, nx: 0, ny: 0 };
     const tilt: TiltState   = { x: 0, y: 0, tx: 0, ty: 0 };
@@ -135,6 +137,23 @@ export default function ParticleBackground() {
       ctx.fill();
     }
 
+    function drawGrabLines() {
+      if (!mouseOnScreen) return;
+      const { r, g, b } = CFG.nodeBright;
+      for (const n of nodes) {
+        const { px, py } = project(n);
+        const d = Math.hypot(px - mouse.x, py - mouse.y);
+        if (d >= CFG.grabDist) continue;
+        const alpha = (1 - d / CFG.grabDist) * 0.55 * n.z;
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = `rgba(${r},${g},${b},${alpha})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
+    }
+
     function tick() {
       tilt.tx =  mouse.nx * (CFG.tiltAmount / 90);
       tilt.ty = -mouse.ny * (CFG.tiltAmount / 90);
@@ -163,12 +182,15 @@ export default function ParticleBackground() {
         }
       }
 
+      drawGrabLines();
+
       for (const n of sorted) drawNode(n);
 
       rafId = requestAnimationFrame(tick);
     }
 
     function onMouseMove(e: MouseEvent) {
+      mouseOnScreen = true;
       mouse.x  = e.clientX;
       mouse.y  = e.clientY;
       mouse.nx = (e.clientX / W) * 2 - 1;
