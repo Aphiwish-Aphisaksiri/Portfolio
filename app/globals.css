@@ -130,6 +130,25 @@ html.light {
 }
 
 /* ──────────────────────────────────────
+   Theme Transition
+   Only active during the ~400ms of a theme
+   switch. Keeps hover & keyframe animations
+   unaffected at all other times.
+   ────────────────────────────────────── */
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition:
+    background-color 0.8s ease,
+    color            0.8s ease,
+    border-color     0.8s ease,
+    fill             0.8s ease,
+    stroke           0.8s ease !important;
+  transition-delay: 0s !important;
+}
+
+/* ──────────────────────────────────────
    Global Styles
    ────────────────────────────────────── */
 html {
