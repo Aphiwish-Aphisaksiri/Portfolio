@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "dark" | "light";
 
@@ -23,14 +23,18 @@ export default function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [resolvedTheme, setResolvedTheme] = useState<Theme | undefined>(() => {
-    try {
-      const stored = localStorage.getItem("theme") as Theme | null;
-      return stored === "light" ? "light" : "dark";
-    } catch {
-      return "dark";
-    }
-  });
+  // Start undefined so SSR and client hydration agree (no localStorage during render).
+  // The inline script in layout.tsx already set the `light` class before React hydrates,
+  // so we read the DOM class in an effect to sync React state after mount.
+  const [resolvedTheme, setResolvedTheme] = useState<Theme | undefined>(undefined);
+
+  useEffect(() => {
+    const initial = document.documentElement.classList.contains("light")
+      ? "light"
+      : "dark";
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setResolvedTheme(initial);
+  }, []);
 
   const setTheme = (theme: Theme) => {
     setResolvedTheme(theme);

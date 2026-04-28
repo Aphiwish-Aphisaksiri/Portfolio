@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center"
+      className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-10 text-center"
     >
       {/* Small muted label */}
       <p className="text-text-muted text-sm tracking-widest uppercase mb-3 landscape-compact:mb-1">
