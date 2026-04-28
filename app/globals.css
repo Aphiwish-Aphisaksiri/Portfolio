@@ -31,8 +31,8 @@
    Light Mode Overrides
    ────────────────────────────────────── */
 html.light {
-  --color-bg: #f8fafc;
-  --color-surface: #ffffff;
+  --color-bg: #e8eaf6;
+  --color-surface: #eef0fb;
   --color-border: #e2e8f0;
   --color-text-primary: #0f172a;
   --color-text-muted: #64748b;
