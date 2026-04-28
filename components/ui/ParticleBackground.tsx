@@ -139,6 +139,7 @@ export default function ParticleBackground() {
 
     function drawGrabLines() {
       if (!mouseOnScreen) return;
+      if (window.matchMedia("(pointer: coarse)").matches) return;
       const { r, g, b } = CFG.nodeBright;
       for (const n of nodes) {
         const { px, py } = project(n);
@@ -198,8 +199,9 @@ export default function ParticleBackground() {
     }
 
     function onResize() {
+      const oldW = W;
       resize();
-      initNodes();
+      if (W !== oldW) initNodes();
     }
 
     resize();
