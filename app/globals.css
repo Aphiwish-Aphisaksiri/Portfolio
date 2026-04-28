@@ -40,18 +40,86 @@ html.light {
   --color-cyan: #0891b2;
 }
 
-/* Nebula Wash — fixed bloom layer between canvas (z-0) and content (z-10) */
-html.light body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 55% at 15% 25%,  rgba(99, 102, 241, 0.18) 0%, transparent 35%),
-    radial-gradient(ellipse 55% 45% at 85% 65%,  rgba(34,  211, 238, 0.13) 0%, transparent 40%),
-    radial-gradient(ellipse 45% 50% at 55% 10%,  rgba(99, 102, 241, 0.10) 0%, transparent 45%),
-    radial-gradient(ellipse 40% 35% at 30% 80%,  rgba(139, 92,  246, 0.09) 0%, transparent 45%);
+/* ──────────────────────────────────────
+   Nebula Blobs — animated light mode wash
+   Sits at z-1, between particle canvas (z-0)
+   and all content (z-10). Each blob drifts on
+   an independent path/speed for organic feel.
+   ────────────────────────────────────── */
+.nebula-blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.nebula-1 {
+  width: 60vw;
+  height: 50vw;
+  top: -15%;
+  left: -12%;
+  background: radial-gradient(ellipse, rgba(99, 102, 241, 0.45) 0%, transparent 50%);
+  filter: blur(90px);
+  opacity: 0.7;
+  animation: nebula-drift-1 32s ease-in-out infinite;
+}
+
+.nebula-2 {
+  width: 48vw;
+  height: 40vw;
+  bottom: -8%;
+  right: -8%;
+  background: radial-gradient(ellipse, rgba(34, 211, 238, 0.38) 0%, transparent 70%);
+  filter: blur(100px);
+  opacity: 0.6;
+  animation: nebula-drift-2 26s ease-in-out infinite;
+}
+
+.nebula-3 {
+  width: 42vw;
+  height: 36vw;
+  top: 8%;
+  right: -6%;
+  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.32) 0%, transparent 70%);
+  filter: blur(80px);
+  opacity: 0.55;
+  animation: nebula-drift-3 38s ease-in-out infinite;
+}
+
+.nebula-4 {
+  width: 38vw;
+  height: 32vw;
+  bottom: 18%;
+  left: 18%;
+  background: radial-gradient(ellipse, rgba(99, 102, 241, 0.22) 0%, transparent 50%);
+  filter: blur(110px);
+  opacity: 0.5;
+  animation: nebula-drift-4 24s ease-in-out infinite;
+}
+
+@keyframes nebula-drift-1 {
+  0%,  100% { transform: translate(0,     0)    scale(1);    }
+  25%        { transform: translate(7vw,   6vh)  scale(1.06); }
+  50%        { transform: translate(4vw,  13vh)  scale(0.94); }
+  75%        { transform: translate(-4vw,  8vh)  scale(1.03); }
+}
+
+@keyframes nebula-drift-2 {
+  0%,  100% { transform: translate(0,     0)    scale(1);    }
+  33%        { transform: translate(-8vw, -9vh)  scale(1.08); }
+  66%        { transform: translate(-3vw, -4vh)  scale(0.94); }
+}
+
+@keyframes nebula-drift-3 {
+  0%,  100% { transform: translate(0,     0)    scale(1);    }
+  25%        { transform: translate(-6vw,  7vh)  scale(1.04); }
+  50%        { transform: translate(-9vw,  3vh)  scale(0.96); }
+  75%        { transform: translate(-3vw, 10vh)  scale(1.05); }
+}
+
+@keyframes nebula-drift-4 {
+  0%,  100% { transform: translate(0,     0)    scale(1);    }
+  40%        { transform: translate(7vw,  -6vh)  scale(1.07); }
+  80%        { transform: translate(-5vw, -3vh)  scale(0.92); }
 }
 
 /* ──────────────────────────────────────
