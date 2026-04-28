@@ -19,7 +19,7 @@ function StackIcon({ entry, size }: { entry: StackIconEntry; size: "sm" | "lg" }
           alt=""
           width={imgSize}
           height={imgSize}
-          className={`w-auto h-auto max-w-full max-h-full ${entry.darkIcon ? "invert" : ""}`}
+          className={`w-auto h-auto max-w-full max-h-full ${entry.darkIcon ? "invert light:[filter:none]" : ""}`}
         />
       </span>
     );

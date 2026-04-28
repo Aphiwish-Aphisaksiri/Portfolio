@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-28
 **Status:** Done
-**Scope:** `components/ThemeProvider.tsx` (new), `app/layout.tsx`, `app/globals.css`, `components/Nav.tsx`
+**Scope:** `components/ThemeProvider.tsx` (new), `app/layout.tsx`, `app/globals.css`, `components/Nav.tsx`, `components/ui/ProjectCard.tsx`, `components/ui/SkillCard.tsx`
 
 ---
 
@@ -56,7 +56,9 @@ Thin `"use client"` wrapper that renders `NextThemesProvider` with `attribute="c
 
 ### `app/globals.css`
 
-Added `html.light { ... }` block with the following overrides:
+Added `@custom-variant light (.light &);` near the top of the file to wire a new Tailwind `light:` variant to the `.light` class that `ThemeProvider` sets on `<html>`. The ThemeProvider is a custom implementation that only ever adds a `.light` class (dark is the default, no class). This means `dark:` utilities can never work here — the correct pattern is to apply styles by default (for dark mode) and use `light:` to override them in light mode.
+
+Also added `html.light { ... }` block with the following overrides:
 
 | Token | Dark (default) | Light |
 |---|---|---|
@@ -69,6 +71,14 @@ Added `html.light { ... }` block with the following overrides:
 | `--color-cyan` | `#22d3ee` | `#0891b2` |
 
 Scrollbar colors adapt automatically since they reference `--color-bg`, `--color-border`, and `--color-accent`.
+
+### `components/ui/ProjectCard.tsx`
+
+The `StackIcon` sub-component renders custom SVG icons (Ollama, TCP Sockets, MQTT, EEG/BCI) as `<Image>` elements. SVGs loaded via `<img>` cannot use `currentColor`, so they must be coloured via CSS `filter`. The fix applies `invert` unconditionally (correct for dark mode, the default) and `light:[filter:none]` to cancel it when `<html class="light">` is present. An earlier attempt used `dark:invert` but this never worked because the ThemeProvider only adds a `.light` class — it never adds a `.dark` class, so `dark:` selectors are always inactive.
+
+### `components/ui/SkillCard.tsx`
+
+Same root cause and fix as `ProjectCard.tsx` — the Ollama `customIcon` image now uses `invert light:[filter:none]`.
 
 ### `components/Nav.tsx`
 
@@ -86,9 +96,11 @@ Scrollbar colors adapt automatically since they reference `--color-bg`, `--color
 - `enableSystem={false}` is intentional — the design default is always dark, not OS-preference-aware.
 - The `--color-cyan` change (`#22d3ee` → `#0891b2` in light mode) affects particle effects and any accent highlights. If the teal feels too muted in light mode, revert to `#22d3ee` or try `#06b6d4`.
 - The Tailwind v4 lint warning `max-w-[1100px]` in Nav.tsx is pre-existing and unrelated to this change.
+- **Tailwind v4 `light:` variant via `@custom-variant`.** The ThemeProvider is a custom implementation that only toggles a `.light` class on `<html>` — it never adds a `.dark` class. Therefore `dark:` utilities are always inactive. The correct pattern is: apply the dark-mode style unconditionally (the default), then override with `light:*` utilities. The `@custom-variant light (.light &);` line in `globals.css` enables this. All future theme-conditional utilities should follow `invert light:[filter:none]`-style patterns, not `dark:*`.
 
 ## Follow-up Tasks
 
+- [x] Fix SVG icons (Ollama, TCP Sockets, MQTT, EEG/BCI) that were invisible in light mode — changed `invert` → `dark:invert` in `ProjectCard.tsx` and `SkillCard.tsx`, and added `@custom-variant dark` to `globals.css`
 - [ ] Audit individual section components (Hero, About, Projects, etc.) for any hard-coded dark colours that don't use the CSS variable tokens — these won't adapt to light mode automatically
 - [ ] Review particle background visibility in light mode; may need opacity or colour adjustments in `ParticleBackground.tsx`
 - [ ] Consider adding a smooth CSS `transition` on `body` (`color`, `background-color`) for a fade effect when toggling

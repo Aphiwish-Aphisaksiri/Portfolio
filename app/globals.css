@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Wire Tailwind's light: variant to the .light class set by ThemeProvider */
+@custom-variant light (.light &);
+
 /* ──────────────────────────────────────
    Design Tokens — Tailwind v4 Theme
    ────────────────────────────────────── */

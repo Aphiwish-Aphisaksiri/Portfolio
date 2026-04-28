@@ -28,7 +28,7 @@ export default function SkillCard({ category }: SkillCardProps) {
                   alt={skill.name}
                   width={24}
                   height={24}
-                  className={`w-auto h-auto max-w-full max-h-full group-hover:scale-110 transition-transform duration-200 ${skill.darkIcon ? "invert" : ""}`}
+                  className={`w-auto h-auto max-w-full max-h-full group-hover:scale-110 transition-transform duration-200 ${skill.darkIcon ? "invert light:[filter:none]" : ""}`}
                 />
               </span>
             ) : (
