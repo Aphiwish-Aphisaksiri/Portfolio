@@ -3,6 +3,13 @@
 /* Wire Tailwind's light: variant to the .light class set by ThemeProvider */
 @custom-variant light (.light &);
 
+/* Landscape mobile compact variant — triggers on phones in landscape (≤500px tall) */
+@custom-variant landscape-compact {
+  @media (orientation: landscape) and (max-height: 500px) {
+    @slot;
+  }
+}
+
 /* ──────────────────────────────────────
    Design Tokens — Tailwind v4 Theme
    ────────────────────────────────────── */

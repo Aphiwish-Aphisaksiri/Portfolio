@@ -9,34 +9,34 @@ export default function Hero() {
       className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center"
     >
       {/* Small muted label */}
-      <p className="text-text-muted text-sm tracking-widest uppercase mb-3">
+      <p className="text-text-muted text-sm tracking-widest uppercase mb-3 landscape-compact:mb-1">
         Hi, I&apos;m
       </p>
 
       {/* Name */}
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-text-primary tracking-tight mb-3">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl landscape-compact:text-3xl font-bold text-text-primary tracking-tight mb-3 landscape-compact:mb-1">
         {PERSONAL.name}
       </h1>
 
       {/* Subtitle */}
-      <p className="text-lg sm:text-xl text-text-muted mb-2">
+      <p className="text-lg sm:text-xl text-text-muted mb-2 landscape-compact:mb-3">
         <span className="text-accent font-medium">{PERSONAL.alias}</span>
         <span className="mx-2 text-border">·</span>
         {PERSONAL.title}
       </p>
 
-      {/* Location */}
-      <p className="text-text-muted text-sm mb-6">
+      {/* Location — hidden in landscape-compact to save vertical space */}
+      <p className="text-text-muted text-sm mb-6 landscape-compact:hidden">
         📍 {PERSONAL.location}
       </p>
 
-      {/* Summary */}
-      <p className="text-text-muted text-base sm:text-lg max-w-xl leading-relaxed mb-8">
+      {/* Summary — hidden in landscape-compact to save vertical space */}
+      <p className="text-text-muted text-base sm:text-lg max-w-xl leading-relaxed mb-8 landscape-compact:hidden">
         {PERSONAL.summary}
       </p>
 
       {/* CTA Buttons */}
-      <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
+      <div className="flex flex-wrap items-center justify-center gap-4 mb-16 landscape-compact:mb-0">
         <a
           href={PERSONAL.github.url}
           target="_blank"
@@ -64,8 +64,10 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* Scroll indicator */}
-      <ScrollIndicator />
+      {/* Scroll indicator — hidden in landscape-compact (little vertical room) */}
+      <div className="landscape-compact:hidden">
+        <ScrollIndicator />
+      </div>
     </section>
   );
 }
