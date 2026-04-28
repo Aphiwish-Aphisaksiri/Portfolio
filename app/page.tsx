@@ -6,12 +6,16 @@ import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 import Contact from "@/components/sections/Contact";
 import ParticleBackground from "@/components/ui/ParticleWrapper";
+import NebulaBackground from "@/components/ui/NebulaBackground";
 
 export default function Home() {
   return (
     <>
       {/* Particle background — fixed, behind everything */}
       <ParticleBackground />
+
+      {/* Nebula wash — light mode only, animated indigo/cyan/violet blobs at z-1 */}
+      <NebulaBackground />
 
       {/* Navigation */}
       <Nav />
