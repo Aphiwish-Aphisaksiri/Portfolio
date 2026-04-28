@@ -139,7 +139,6 @@ export default function ParticleBackground() {
 
     function drawGrabLines() {
       if (!mouseOnScreen) return;
-      if (window.matchMedia("(pointer: coarse)").matches) return;
       const { r, g, b } = CFG.nodeBright;
       for (const n of nodes) {
         const { px, py } = project(n);
@@ -190,7 +189,8 @@ export default function ParticleBackground() {
       rafId = requestAnimationFrame(tick);
     }
 
-    function onMouseMove(e: MouseEvent) {
+    function onPointerMove(e: PointerEvent) {
+      if (e.pointerType !== "mouse") return;
       mouseOnScreen = true;
       mouse.x  = e.clientX;
       mouse.y  = e.clientY;
@@ -208,12 +208,12 @@ export default function ParticleBackground() {
     initNodes();
     tick();
 
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("resize", onResize);
 
     return () => {
       cancelAnimationFrame(rafId);
-      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("resize", onResize);
     };
   }, []);
