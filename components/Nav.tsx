@@ -2,16 +2,18 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { useTheme } from "@/components/ThemeProvider";
 import { NAV_LINKS } from "@/lib/constants";
-import { HiMenu, HiX } from "react-icons/hi";
+import { HiMenu, HiX, HiMoon, HiSun } from "react-icons/hi";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
-  // Detect scroll for background blur
   useEffect(() => {
+    // Detect scroll for background blur
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -96,6 +98,21 @@ export default function Nav() {
                 </a>
               );
             })}
+
+            {/* Theme toggle */}
+            <button
+              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+              aria-label="Toggle theme"
+              className="text-text-muted hover:text-text-primary transition-colors duration-200 p-1"
+            >
+              {!resolvedTheme ? (
+                <span className="block w-4.5 h-4.5" />
+              ) : resolvedTheme === "dark" ? (
+                <HiSun size={18} />
+              ) : (
+                <HiMoon size={18} />
+              )}
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -130,6 +147,21 @@ export default function Nav() {
               </a>
             );
           })}
+
+          {/* Theme toggle */}
+          <button
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+            aria-label="Toggle theme"
+            className="text-text-muted hover:text-text-primary transition-colors duration-200 p-2"
+          >
+            {!resolvedTheme ? (
+              <span className="block w-7 h-7" />
+            ) : resolvedTheme === "dark" ? (
+              <HiSun size={28} />
+            ) : (
+              <HiMoon size={28} />
+            )}
+          </button>
         </div>
       )}
     </>
