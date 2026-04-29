@@ -25,9 +25,10 @@ interface TiltState {
   ty: number;
 }
 
+// px² per node — calibrated so a 1920×1080 viewport yields ~90 nodes
+const DENSITY_AREA = 23_040;
+
 const CFG = {
-  nodeCount: 90,
-  maxDist: 180,
   grabDist: 140,
   nodeSpeed: 0.28,
   tiltAmount: 18,
@@ -52,6 +53,7 @@ export default function ParticleBackground() {
     if (!ctx) return;
 
     let W = 0, H = 0, cx = 0, cy = 0;
+    let nodeCount = 0, maxDist = 0;
     let rafId = 0;
     let nodes: Node[] = [];
     let mouseOnScreen = false;
@@ -64,11 +66,13 @@ export default function ParticleBackground() {
       H = canvas.height = window.innerHeight;
       cx = W / 2;
       cy = H / 2;
+      nodeCount = Math.max(20, Math.min(110, Math.round((W * H) / DENSITY_AREA)));
+      maxDist   = Math.round(Math.min(180, W * 0.095));
     }
 
     function initNodes() {
       nodes = [];
-      for (let i = 0; i < CFG.nodeCount; i++) {
+      for (let i = 0; i < nodeCount; i++) {
         const sign = () => (Math.random() > 0.5 ? 1 : -1);
         nodes.push({
           x:  rand(0, W),
@@ -122,11 +126,12 @@ export default function ParticleBackground() {
       const { r, g, b } = CFG.nodeBright;
 
       if (hover > 0.1) {
-        const glow = ctx.createRadialGradient(px, py, 0, px, py, radius * 5);
+        const glowRadius = Math.min(radius * 5, W * 0.025);
+        const glow = ctx.createRadialGradient(px, py, 0, px, py, glowRadius);
         glow.addColorStop(0, `rgba(${r},${g},${b},${hover * 0.25})`);
         glow.addColorStop(1, `rgba(${r},${g},${b},0)`);
         ctx.beginPath();
-        ctx.arc(px, py, radius * 5, 0, Math.PI * 2);
+        ctx.arc(px, py, glowRadius, 0, Math.PI * 2);
         ctx.fillStyle = glow;
         ctx.fill();
       }
@@ -178,7 +183,7 @@ export default function ParticleBackground() {
           const { px: ax, py: ay } = project(sorted[i]);
           const { px: bx, py: by } = project(sorted[j]);
           const d = Math.hypot(ax - bx, ay - by);
-          if (d < CFG.maxDist) drawEdge(sorted[i], sorted[j], d, CFG.maxDist);
+          if (d < maxDist) drawEdge(sorted[i], sorted[j], d, maxDist);
         }
       }
 
@@ -199,9 +204,9 @@ export default function ParticleBackground() {
     }
 
     function onResize() {
-      const oldW = W;
+      const oldW = W, oldH = H;
       resize();
-      if (W !== oldW) initNodes();
+      if (W !== oldW || H !== oldH) initNodes();
     }
 
     resize();
