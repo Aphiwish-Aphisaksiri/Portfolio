@@ -14,7 +14,7 @@ export default function Home() {
       {/* Particle background — fixed, behind everything */}
       <ParticleBackground />
 
-      {/* Nebula wash — light mode only, animated indigo/cyan/violet blobs at z-1 */}
+      {/* Nebula wash, animated indigo/cyan/violet blobs at z-1 */}
       <NebulaBackground />
 
       {/* Navigation */}

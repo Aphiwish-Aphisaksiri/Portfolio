@@ -3,8 +3,8 @@
 import { useTheme } from "@/components/ThemeProvider";
 
 export default function NebulaBackground() {
-  const { resolvedTheme } = useTheme();
-  if (resolvedTheme !== "light") return null;
+  // const { resolvedTheme } = useTheme();
+  // if (resolvedTheme !== "light") return null;
 
   return (
     <div
