@@ -149,7 +149,7 @@ export default function ExperienceCard({
                                     alt=""
                                     width={24}
                                     height={24}
-                                    className={`w-auto h-auto max-w-full max-h-full ${entry.darkIcon ? "invert" : ""}`}
+                                    className={`w-auto h-auto max-w-full max-h-full ${entry.darkIcon ? "invert light:[filter:none]" : ""}`}
                                   />
                                 </span>
                               ) : (

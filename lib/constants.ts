@@ -157,7 +157,7 @@ export const EXPERIENCES: Experience[] = [
       "Owned the end-to-end service lifecycle from architecture and database migrations to GitOps deployment, ensuring high quality via table-driven tests and automated CI/CD pipelines.",
       "Collaborated cross-functionally with Legal, Product, and Compliance teams to translate complex regulatory requirements into technical AI solutions during biweekly steering meetings.",
     ],
-    tags: ["Go", "Ruby on Rails", "AI Agents", "GitOps", "Microservices", "LLM"],
+    tags: ["Go", "Ruby on Rails", "AI Agents", "GitOps", "Microservices"],
   },
   {
     role: "Software Engineer in Test Intern",
