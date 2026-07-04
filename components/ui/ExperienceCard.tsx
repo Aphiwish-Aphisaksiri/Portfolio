@@ -56,6 +56,7 @@ export default function ExperienceCard({
                       src={experience.logo}
                       alt={`${experience.company} logo`}
                       fill
+                      sizes="(min-width: 640px) 44px, 40px"
                       className="object-contain"
                     />
                   </div>
