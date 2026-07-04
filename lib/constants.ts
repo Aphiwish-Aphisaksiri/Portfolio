@@ -143,17 +143,20 @@ export const STAT_CARDS: StatCardData[] = [
 // The Experience component should sort by current first, then by period descending.
 
 export const EXPERIENCES: Experience[] = [
-  // {
-  //   role: "Software Engineer (AI)",
-  //   company: "Omise",
-  //   companyUrl: "https://omise.co/",
-  //   period: "May 2026 – Present",
-  //   current: true,
-  //   bullets: [
-  //     "-"
-  //   ],
-  //   tags: [""],
-  // },
+  {
+    role: "Software Engineer (AI)",
+    company: "Omise",
+    companyUrl: "https://omise.co/",
+    period: "May 2026 – Present",
+    current: true,
+    bullets: [
+      "Designed and built a Summary Agent microservice in Go for Re-KYC automation, implementing a custom PII-filtering layer to ensure merchant data privacy and regulatory compliance.",
+      "Integrated three AI agents (OCR, website verification, and summary generation) into a legacy Ruby on Rails platform, modernizing manual risk-assessment workflows for analysts.",
+      "Owned the end-to-end service lifecycle from architecture and database migrations to GitOps deployment, ensuring high quality via table-driven tests and automated CI/CD pipelines.",
+      "Collaborated cross-functionally with Legal, Product, and Compliance teams to translate complex regulatory requirements into technical AI solutions during biweekly steering meetings.",
+    ],
+    tags: ["Go", "Ruby on Rails", "AI Agents", "GitOps", "Microservices", "LLM"],
+  },
   {
     role: "Software Engineer in Test Intern",
     company: "LINE MAN Wongnai",
@@ -360,4 +363,10 @@ export const STACK_ICON_MAP: Record<string, StackIconEntry> = {
   MongoDB: { icon: "devicon-mongodb-plain", type: "devicon" },
   Confluence: { icon: "devicon-confluence-plain", type: "devicon" },
   Jira: { icon: "devicon-jira-plain", type: "devicon" },
+  Go: { icon: "devicon-go-original-wordmark", type: "devicon" },
+  "Ruby on Rails": { icon: "devicon-rails-plain", type: "devicon" },
+  "AI Agents": { icon: "/icons/brain.svg", type: "svg", darkIcon: true },
+  GitOps: { icon: "devicon-git-plain", type: "devicon" },
+  Microservices: { icon: "/icons/cpu.svg", type: "svg" },
+  LLM: { icon: "/icons/ollama.svg", type: "svg", darkIcon: true },
 };
