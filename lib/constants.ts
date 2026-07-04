@@ -354,7 +354,7 @@ export const STACK_ICON_MAP: Record<string, StackIconEntry> = {
   "Scikit-Learn": { icon: "devicon-scikitlearn-plain", type: "devicon" },
   DearPyGUI: { icon: "devicon-python-plain", type: "devicon" },
   HDF5: { icon: "devicon-python-plain", type: "devicon" },
-  Multithreading: { icon: "/icons/cpu.svg", type: "svg" },
+  Multithreading: { icon: "/icons/cpu.svg", type: "svg", darkIcon: true },
   MATLAB: { icon: "devicon-matlab-plain", type: "devicon" },
   YOLOv11: { icon: "/icons/ultralytics.svg", type: "svg" },
   Roboflow: { icon: "/icons/roboflow.svg", type: "svg" },
@@ -370,6 +370,6 @@ export const STACK_ICON_MAP: Record<string, StackIconEntry> = {
   "Ruby on Rails": { icon: "devicon-rails-plain", type: "devicon" },
   "AI Agents": { icon: "/icons/brain.svg", type: "svg", darkIcon: true },
   GitOps: { icon: "devicon-git-plain", type: "devicon" },
-  Microservices: { icon: "/icons/cpu.svg", type: "svg" },
+  Microservices: { icon: "/icons/cpu.svg", type: "svg", darkIcon: true },
   LLM: { icon: "/icons/ollama.svg", type: "svg", darkIcon: true },
 };
