@@ -21,7 +21,7 @@ export default function ExperienceCard({
   return (
     <div className="relative flex items-start gap-3 md:gap-6">
       {/* Left column: dot + line */}
-      <div className="flex flex-col items-center self-stretch">
+      <div className="flex flex-col items-center self-stretch w-4 shrink-0">
         {/* Dot — mt nudges to align with header center */}
         {experience.current ? (
           <div className="mt-[1.1rem] relative w-4 h-4 rounded-full bg-accent shadow-[0_0_12px_theme(--color-accent)] after:absolute after:inset-0 after:rounded-full after:bg-accent-hover after:opacity-75 after:animate-ping" />
@@ -49,11 +49,22 @@ export default function ExperienceCard({
             className="w-full text-left cursor-pointer"
           >
             <div className="flex items-start justify-between gap-4">
-              <div>
-                <h3 className="text-lg font-semibold text-text-primary">
-                  {experience.role}
-                </h3>
-                {experience.companyUrl ? (
+              <div className="flex items-center sm:items-start gap-4 flex-1">
+                {experience.logo && (
+                  <div className="relative w-10 h-10 sm:w-11 sm:h-11 shrink-0 my-1">
+                    <Image
+                      src={experience.logo}
+                      alt={`${experience.company} logo`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                )}
+                <div>
+                  <h3 className="text-lg font-semibold text-text-primary">
+                    {experience.role}
+                  </h3>
+                  {experience.companyUrl ? (
                   <a
                     href={experience.companyUrl}
                     target="_blank"
@@ -68,6 +79,7 @@ export default function ExperienceCard({
                     {experience.company}
                   </p>
                 )}
+                </div>
               </div>
 
               <div className="flex items-center gap-3 shrink-0">

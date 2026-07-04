@@ -54,6 +54,7 @@ export interface Experience {
   role: string;
   company: string;
   companyUrl?: string;
+  logo?: string;
   period: string;
   current: boolean; // set to true for active role — used to show "Present" badge
   bullets: string[];
@@ -144,9 +145,10 @@ export const STAT_CARDS: StatCardData[] = [
 
 export const EXPERIENCES: Experience[] = [
   {
-    role: "Software Engineer (AI)",
+    role: "AI Software Engineer (Contract)",
     company: "Omise",
     companyUrl: "https://omise.co/",
+    logo: "/icons/omiselogo.svg",
     period: "May 2026 – Present",
     current: true,
     bullets: [
@@ -161,6 +163,7 @@ export const EXPERIENCES: Experience[] = [
     role: "Software Engineer in Test Intern",
     company: "LINE MAN Wongnai",
     companyUrl: "https://lmwn.com/",
+    logo: "/icons/line-man-logo.svg",
     period: "May 2024 – Jul 2024",
     current: false,
     bullets: [
