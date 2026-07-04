@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="-6 -6 76 76"
+   width="100%"
+   height="100%"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="omiselogo.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="256"
+     inkscape:cx="62.8125"
+     inkscape:cy="75.443359"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="1609"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <g
+     id="g2"
+     transform="matrix(1.1875516,0,0,1.1875516,-5.9995975,-6.0000075)">
+    <path
+       d="m 54.606,9.377 c -12.48,-12.48 -32.766,-12.48 -45.246,0 -12.48,12.48 -12.48,32.766 0,45.246 12.48,12.48 32.766,12.48 45.246,0 12.48,-12.48 12.48,-32.766 0,-45.246 z M 49.614,32.703 32.686,49.63 c -0.408,0.408 -1.044,0.408 -1.452,0 L 14.307,32.703 c -0.408,-0.408 -0.408,-1.044 0,-1.452 L 31.234,14.324 c 0.408,-0.408 1.044,-0.408 1.452,0 L 49.614,31.25 c 0.408,0.408 0.408,1.044 0,1.452 z"
+       fill="#2176ff"
+       id="path1" />
+    <path
+       d="M 64,31.932 C 64,23.446 60.642,15.277 54.65,9.286 49.567,4.203 41.353,4.158 36.27,9.241 l -4.992,4.947 a 1,1 0 0 1 0.681,-0.272 c 0.272,0 0.545,0.136 0.726,0.318 l 21.874,21.92 c 5.083,5.083 5.083,13.297 0,18.38 6.036,-6 9.44,-14.114 9.44,-22.6 z M 9.315,54.487 c 5.083,5.083 13.297,5.083 18.425,0.045 l 4.947,-5.037 c -0.363,0.408 -1.044,0.408 -1.452,0.045 L 14.352,32.658 c -0.227,-0.182 -0.318,-0.5 -0.318,-0.77 0,-0.27 0.1,-0.545 0.272,-0.726 l -4.9,4.9 a 13.08,13.08 0 0 0 -0.09,18.425 z"
+       fill="#1a53f0"
+       id="path2" />
+  </g>
+</svg>
