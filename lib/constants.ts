@@ -71,7 +71,7 @@ export const PERSONAL = {
   title: "Software Engineer",
   location: "Bangkok, Thailand",
   summary:
-    "Biomedical Engineering graduate specializing in AI systems — RAG pipelines, agentic LLMs, and the full-stack infrastructure to ship them",
+    "Software engineer shipping agentic AI systems end-to-end — RAG pipelines, LLM tooling, and the production infrastructure behind them.",
   email: "work@aphiwish.com",
   github: {
     url: "https://github.com/Aphiwish-Aphisaksiri",
@@ -130,7 +130,7 @@ export const STAT_CARDS: StatCardData[] = [
   {
     icon: "🚀",
     label: "Projects Shipped",
-    value: "4+",
+    value: "5+",
     href: "#projects",
     isExternal: false,
   },
