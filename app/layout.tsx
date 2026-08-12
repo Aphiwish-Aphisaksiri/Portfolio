@@ -14,16 +14,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.aphiwish.com"),
   title: "Aphiwish Aphisaksiri — Software Engineer",
   description:
     "Full-stack Software Engineer focused on AI-integrated applications. Based in Bangkok, Thailand.",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/icons/logo.svg",
   },
   openGraph: {
     title: "Aphiwish Aphisaksiri",
     description: "Software Engineer · Bangkok, Thailand",
-    url: "https://aphiwish.com",
+    url: "https://www.aphiwish.com",
     siteName: "Aphiwish Aphisaksiri",
     type: "website",
   },
