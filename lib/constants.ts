@@ -215,6 +215,34 @@ export const PROJECTS: Project[] = [
       },
     ],
   },
+    {
+    title: "Cloud-Native Portfolio Platform",
+    star: false,
+    collapsed:
+      "Serverless personal portfolio deployed via Vercel and Cloudflare, featuring automated GitOps pipeline and API route handlers.",
+    expanded:
+      "Architected an automated GitOps deployment pipeline using Vercel, featuring PR preview environments and zero-downtime production builds. Global traffic is proxied through Cloudflare to a custom domain (aphiwish.com) with edge caching and strict SSL. The backend utilizes Next.js Serverless Route Handlers integrated with the Resend API for a secure contact service, employing Zod schema validation and a custom IP-based rate limiter to mitigate spam, with secrets securely isolated via Vercel Environment Variables. The frontend delivers a high-performance interactive experience using React Three Fiber and Tailwind CSS v4, achieving elite Lighthouse scores (100 Performance, 100 SEO). Project development was strictly managed through GitHub Issues and continuous PR-based workflows.",
+    metrics: [
+      { icon: "🚀", text: "100/100 Lighthouse Performance & SEO" },
+      { icon: "🛡️", text: "Zero-downtime Vercel CI/CD & Cloudflare proxy" },
+      { icon: "⏱", text: "Secure IP-rated serverless API with Zod validation" },
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Vercel",
+      "Cloudflare",
+      "Tailwind CSS",
+      "React Three Fiber",
+    ],
+    links: [
+      {
+        label: "GitHub",
+        url: "https://github.com/Aphiwish-Aphisaksiri/Portfolio",
+        isExternal: true,
+      },
+    ],
+  },
   {
     title: "CYBATHLON 2024 BCI",
     collapsed:
@@ -231,45 +259,6 @@ export const PROJECTS: Project[] = [
       {
         label: "Team Page",
         url: "https://cybathlon.com/en/teams/mahidol-bcilab",
-        isExternal: true,
-      },
-    ],
-  },
-  {
-    title: "BOAS — Neural Signal Acquisition",
-    collapsed:
-      "Real-time multi-threaded Python desktop application for neural signal acquisition with a custom O(1) circular buffer.",
-    expanded:
-      "A capstone neural signal acquisition app engineered for deterministic real-time performance. I designed an abstract base thread framework enforcing clean lifecycle management across all system components, then replaced a naive array-shifting FIFO with a pointer-based circular buffer achieving O(1) writes for low-latency inter-thread data flow between the DAQ producer and multiple consumers (filter, plotter, recorder). A key challenge was diagnosing data loss traced to MCU throughput limits on the BlueNRG-LP — I determined 4 channels at 8,000 Hz/24-bit as the hardware ceiling through systematic testing, and identified CPU saturation from concurrent 1.25 Mbaud serial ports as the bottleneck of a dual-MCU alternative. The DearPyGUI frontend renders 4 live signal channels with runtime-adjustable filters, and the app ships as a standalone executable via PyInstaller + PyArmor with an automated obfuscation pipeline.",
-    metrics: [
-      { icon: "⚡", text: "O(1) circular buffer — pointer-based, no array shifting" },
-      { icon: "🔬", text: "4-channel real-time acquisition at 8,000 Hz / 24-bit" },
-      { icon: "📦", text: "Standalone executable via PyInstaller + PyArmor" },
-    ],
-    stack: ["Python", "DearPyGUI", "HDF5", "Multithreading", "MATLAB", "NumPy"],
-    links: [
-      {
-        label: "GitHub",
-        url: "https://github.com/Aphiwish-Aphisaksiri/BrainOrganoidDataAcquisitionSystem",
-        isExternal: true,
-      },
-    ],
-  },
-  {
-    title: "YOLO Object Detection Fine-tuning",
-    collapsed:
-      "Fine-tuned YOLOv11n on a custom Roboflow dataset for real-time shelf detection, reaching mAP50 of 0.792.",
-    expanded:
-      "Fine-tuned YOLOv11n on a 1,256-image Roboflow dataset (25 classes, 640×640, 70/20/10 split) as a proof-of-concept for medical supply-chain inventory systems. I ran systematic hyperparameter experiments across optimizers (SGD vs Adam), batch sizes (16/32), and learning rates (0.01/0.001), selecting Adam with lr=0.001 as the optimal config. Best-checkpoint results reached mAP50 of 0.792 and mAP50-95 of 0.715 at epoch 75/100. The trained model was deployed into a real-time Python application using Ultralytics + OpenCV + webcam for live inference with bounding boxes and confidence scores.",
-    metrics: [
-      { icon: "🎯", text: "mAP50: 0.792 · mAP50-95: 0.715 at epoch 75" },
-      { icon: "🔬", text: "25 classes · 1,256 images · systematic HPO runs" },
-    ],
-    stack: ["Python", "YOLOv11", "Roboflow", "PyTorch", "OpenCV"],
-    links: [
-      {
-        label: "GitHub",
-        url: "https://github.com/Aphiwish-Aphisaksiri/DishSoapDetection",
         isExternal: true,
       },
     ],
@@ -372,4 +361,8 @@ export const STACK_ICON_MAP: Record<string, StackIconEntry> = {
   GitOps: { icon: "devicon-git-plain", type: "devicon" },
   Microservices: { icon: "/icons/cpu.svg", type: "svg", darkIcon: true },
   LLM: { icon: "/icons/ollama.svg", type: "svg", darkIcon: true },
+  Vercel: { icon: "devicon-vercel-original", type: "devicon", darkIcon: true },
+  Cloudflare: { icon: "devicon-cloudflare-plain", type: "devicon" },
+  "Tailwind CSS": { icon: "devicon-tailwindcss-original", type: "devicon" },
+  "React Three Fiber": { icon: "devicon-react-original", type: "devicon" },
 };
